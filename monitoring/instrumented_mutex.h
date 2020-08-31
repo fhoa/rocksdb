@@ -5,6 +5,7 @@
 
 #pragma once
 
+#include "db/db_impl/db_impl.h"
 #include "monitoring/statistics.h"
 #include "port/port.h"
 #include "rocksdb/env.h"

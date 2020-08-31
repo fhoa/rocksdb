@@ -12,6 +12,7 @@
 #include <vector>
 
 #include "file/filename.h"
+#include "logging/logging.h"
 #include "rocksdb/env.h"
 
 namespace ROCKSDB_NAMESPACE {
@@ -22,6 +23,11 @@ void DumpDBFileSummary(const ImmutableDBOptions& options,
   if (options.info_log == nullptr) {
     return;
   }
+
+  DBOptions option;
+    ROCKS_LOG_INFO(
+        option.info_log,
+        "HELLO MY OWN LOG MESSAGE");
 
   auto* env = options.env;
   uint64_t number = 0;

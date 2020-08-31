@@ -24,9 +24,15 @@ void DumpDBFileSummary(const ImmutableDBOptions& options,
     return;
   }
 
+  DBOptions logger_options;
+  std::shared_ptr<Logger> logger_;
+  std::unique_ptr<Env> db_chroot_env_;
+  logger_options.env = db_chroot_env_.get();
+  CreateLoggerFromOptions("test", logger_options, &logger_);
+
   DBOptions option;
     ROCKS_LOG_INFO(
-        option.info_log,
+        logger_options.info_log,
         "HELLO MY OWN LOG MESSAGE");
 
   auto* env = options.env;

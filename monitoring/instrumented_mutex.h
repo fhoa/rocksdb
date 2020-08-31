@@ -12,7 +12,6 @@
 #include "rocksdb/thread_status.h"
 #include "util/stop_watch.h"
 #include "logging/logging.h"
-#include "db/db_impl/db_impl.h";
 
 namespace ROCKSDB_NAMESPACE {
 class InstrumentedCondVar;
@@ -55,7 +54,7 @@ class InstrumentedMutex {
 class InstrumentedMutexLock {
  public:
   explicit InstrumentedMutexLock(InstrumentedMutex* mutex) : mutex_(mutex) {
-    DBOptions options_ = GetDBOptions();
+    DBOptions options_ = DBImpl::GetDBOptions();
     ROCKS_LOG_INFO(options_.info_log, "HERE");
     mutex_->Lock();
   }

@@ -24,17 +24,6 @@ void DumpDBFileSummary(const ImmutableDBOptions& options,
     return;
   }
 
-  DBOptions logger_options;
-  std::shared_ptr<Logger> logger_;
-  std::unique_ptr<Env> db_chroot_env_;
-  logger_options.env = db_chroot_env_.get();
-  CreateLoggerFromOptions("test", logger_options, &logger_);
-
-  DBOptions option;
-    ROCKS_LOG_INFO(
-        logger_options.info_log,
-        "HELLO MY OWN LOG MESSAGE");
-
   auto* env = options.env;
   uint64_t number = 0;
   FileType type = kInfoLogFile;

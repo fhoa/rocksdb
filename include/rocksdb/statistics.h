@@ -26,7 +26,6 @@ namespace ROCKSDB_NAMESPACE {
  * and toCppTickers
  */
 enum Tickers : uint32_t {
-  CRITICAL_SECTIONS_ENTERED = 0,
   // total block cache misses
   // REQUIRES: BLOCK_CACHE_MISS == BLOCK_CACHE_INDEX_MISS +
   //                               BLOCK_CACHE_FILTER_MISS +
@@ -374,6 +373,7 @@ enum Tickers : uint32_t {
   FILES_MARKED_TRASH,
   // # of files deleted immediately by sst file manger through delete scheduler.
   FILES_DELETED_IMMEDIATELY,
+  CRITICAL_SECTIONS_ENTERED,
 
   TICKER_ENUM_MAX
 };

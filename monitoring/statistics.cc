@@ -192,6 +192,7 @@ const std::vector<std::pair<Tickers, std::string>> TickersNameMap = {
     {BLOCK_CACHE_COMPRESSION_DICT_ADD_REDUNDANT,
      "rocksdb.block.cache.compression.dict.add.redundant"},
     {FILES_MARKED_TRASH, "rocksdb.files.marked.trash"},
+    {CRITICAL_SECTIONS_ENTERED, "CRITICAL_SECTIONS_ENTERED"},
     {FILES_DELETED_IMMEDIATELY, "rocksdb.files.deleted.immediately"},
 };
 

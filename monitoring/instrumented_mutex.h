@@ -12,6 +12,7 @@
 #include "rocksdb/statistics.h"
 #include "rocksdb/thread_status.h"
 #include "util/stop_watch.h"
+#include "logging/logging.h"
 
 
 namespace ROCKSDB_NAMESPACE {
@@ -58,7 +59,7 @@ class InstrumentedMutexLock {
     mutex_->Lock();
   }
 
-  ~InstrumentedMutexLock() {
+  ~InstrumentedMutexLock()  {
     mutex_->Unlock();
   }
 

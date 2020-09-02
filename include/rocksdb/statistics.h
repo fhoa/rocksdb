@@ -26,6 +26,7 @@ namespace ROCKSDB_NAMESPACE {
  * and toCppTickers
  */
 enum Tickers : uint32_t {
+  CRITICAL_SECTIONS_ENTERED = 0,
   // total block cache misses
   // REQUIRES: BLOCK_CACHE_MISS == BLOCK_CACHE_INDEX_MISS +
   //                               BLOCK_CACHE_FILTER_MISS +

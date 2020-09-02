@@ -22,6 +22,7 @@ int main() {
   options.OptimizeLevelStyleCompaction();
   // create the DB if it's not already present
   options.create_if_missing = true;
+  options.statistics = CreateDBStatistics();
 
   // open DB
   Status s = DB::Open(options, kDBPath, &db);

@@ -16,6 +16,7 @@ namespace ROCKSDB_NAMESPACE {
 // The order of items listed in  Tickers should be the same as
 // the order listed in TickersNameMap
 const std::vector<std::pair<Tickers, std::string>> TickersNameMap = {
+    {CRITICAL_SECTIONS_ENTERED, "CRITICAL_SECTIONS"},
     {BLOCK_CACHE_MISS, "rocksdb.block.cache.miss"},
     {BLOCK_CACHE_HIT, "rocksdb.block.cache.hit"},
     {BLOCK_CACHE_ADD, "rocksdb.block.cache.add"},

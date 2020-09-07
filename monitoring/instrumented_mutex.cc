@@ -7,7 +7,6 @@
 #include "monitoring/perf_context_imp.h"
 #include "monitoring/thread_status_util.h"
 #include "test_util/sync_point.h"
-#include "logging/logging.h"
 
 namespace ROCKSDB_NAMESPACE {
 namespace {

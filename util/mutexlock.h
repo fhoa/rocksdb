@@ -15,6 +15,7 @@
 #include "port/port.h"
 #include "logging/logging.h"
 #include "rocksdb/env.h"
+#include "monitoring/statistics.h"
 
 namespace ROCKSDB_NAMESPACE {
 
@@ -31,10 +32,7 @@ namespace ROCKSDB_NAMESPACE {
 class MutexLock {
  public:
   explicit MutexLock(port::Mutex *mu) : mu_(mu) {
-    DBOptions options;
-    ROCKS_LOG_INFO(
-        options.info_log,
-        "HELLO MY OWN LOG MESSAGE");
+    RecordTick(CreateDBStatistics(), CRITICAL_SECTIONS_ENTERED, 1)
     this->mu_->Lock();
   }
   // No copying allowed

@@ -33,7 +33,10 @@ namespace ROCKSDB_NAMESPACE {
 class MutexLock {
  public:
   explicit MutexLock(port::Mutex *mu) : mu_(mu) {
-    RecordTick(CreateDBStatistics(), CRITICAL_SECTIONS_ENTERED, 1);
+    // Options options;
+    // rocksdb::CreateDBStatistics();
+    // CreateDBStatistics().get()
+    GetDBStatistics().get()->recordTick(CRITICAL_SECTIONS_ENTERED, 1);
     this->mu_->Lock();
   }
     

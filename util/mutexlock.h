@@ -13,6 +13,7 @@
 #include <mutex>
 #include <thread>
 #include "monitoring/statistics.h"
+#include "rocksdb/statistics.h"
 #include "port/port.h"
 #include "logging/logging.h"
 #include "rocksdb/env.h"
@@ -35,6 +36,7 @@ class MutexLock {
     RecordTick(CreateDBStatistics(), CRITICAL_SECTIONS_ENTERED, 1);
     this->mu_->Lock();
   }
+    
   // No copying allowed
   MutexLock(const MutexLock &) = delete;
   void operator=(const MutexLock &) = delete;

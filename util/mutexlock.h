@@ -12,10 +12,10 @@
 #include <atomic>
 #include <mutex>
 #include <thread>
+#include "monitoring/statistics.h"
 #include "port/port.h"
 #include "logging/logging.h"
 #include "rocksdb/env.h"
-#include "monitoring/statistics.h"
 
 namespace ROCKSDB_NAMESPACE {
 
@@ -32,7 +32,7 @@ namespace ROCKSDB_NAMESPACE {
 class MutexLock {
  public:
   explicit MutexLock(port::Mutex *mu) : mu_(mu) {
-    RecordTick(CreateDBStatistics(), CRITICAL_SECTIONS_ENTERED, 1)
+    RecordTick(CreateDBStatistics(), CRITICAL_SECTIONS_ENTERED, 1);
     this->mu_->Lock();
   }
   // No copying allowed

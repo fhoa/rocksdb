@@ -578,4 +578,6 @@ class Statistics {
 // Create a concrete DBStatistics object
 std::shared_ptr<Statistics> CreateDBStatistics();
 
+std::shared_ptr<Statistics> GetDBStatistics();
+
 }  // namespace ROCKSDB_NAMESPACE

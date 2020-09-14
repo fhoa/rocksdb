@@ -250,11 +250,14 @@ const std::vector<std::pair<Histograms, std::string>> HistogramsNameMap = {
 std::shared_ptr<Statistics> stats_;
 
 std::shared_ptr<Statistics> CreateDBStatistics() {
+  if(stats_ != NULL) return stats_;
   stats_ = std::make_shared<StatisticsImpl>(nullptr);
   return stats_;
 }
 
 std::shared_ptr<Statistics> GetDBStatistics(){
+  if(stats_ == NULL)
+    stats_ = CreateDBStatistics();
   return stats_;
 }
 

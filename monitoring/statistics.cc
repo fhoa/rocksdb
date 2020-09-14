@@ -258,6 +258,10 @@ std::shared_ptr<Statistics> GetDBStatistics(){
   return stats_;
 }
 
+void SetDBStatistics(std::shared_ptr<Statistics> stats){
+  stats_ = stats;
+}
+
 StatisticsImpl::StatisticsImpl(std::shared_ptr<Statistics> stats)
     : stats_(std::move(stats)) {}
 

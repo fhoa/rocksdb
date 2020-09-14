@@ -26,6 +26,8 @@ int main() {
 
   // open DB
   Status s = DB::Open(options, kDBPath, &db);
+  SetDBStatistics(options.statistics);
+  
   assert(s.ok());
 
   // Put key-value

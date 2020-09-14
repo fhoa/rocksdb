@@ -580,4 +580,6 @@ std::shared_ptr<Statistics> CreateDBStatistics();
 
 std::shared_ptr<Statistics> GetDBStatistics();
 
+void SetDBStatistics(std::shared_ptr<Statistics> stats);
+
 }  // namespace ROCKSDB_NAMESPACE

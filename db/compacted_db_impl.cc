@@ -154,6 +154,7 @@ Status CompactedDBImpl::Open(const Options& options,
                    "Opened the db as fully compacted mode");
     LogFlush(db->immutable_db_options_.info_log);
     *dbptr = db.release();
+    SetDBStatistics(db_options.statistics);
   }
   return s;
 }

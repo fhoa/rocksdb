@@ -247,7 +247,7 @@ const std::vector<std::pair<Histograms, std::string>> HistogramsNameMap = {
     {SST_BATCH_SIZE, "rocksdb.sst.batch.size"},
 };
 
-std::shared_ptr<StatisticsImpl> stats_;
+std::shared_ptr<Statistics> stats_;
 
 std::shared_ptr<Statistics> CreateDBStatistics() {
   stats_ = std::make_shared<StatisticsImpl>(nullptr);

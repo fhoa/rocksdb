@@ -17,17 +17,17 @@ std::string kDBPath = "/tmp/fhoa_rocksdb_simple_example";
 int main() {
   DB* db;
   Options options;
+  options.statistics = CreateDBStatistics();
   // Optimize RocksDB. This is the easiest way to get RocksDB to perform well
   options.IncreaseParallelism();
   options.OptimizeLevelStyleCompaction();
   // create the DB if it's not already present
   options.create_if_missing = true;
-  options.statistics = CreateDBStatistics();
 
   // open DB
   Status s = DB::Open(options, kDBPath, &db);
   SetDBStatistics(options.statistics);
-  
+
   assert(s.ok());
 
   // Put key-value

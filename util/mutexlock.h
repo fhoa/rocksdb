@@ -36,7 +36,9 @@ class MutexLock {
     // Options options;
     // rocksdb::CreateDBStatistics();
     // CreateDBStatistics().get()
-    GetDBStatistics().get()->recordTick(CRITICAL_SECTIONS_ENTERED, 1);
+    auto stats = GetDBStatistics();
+    if(stats != NULL)
+      stats.get()->recordTick(CRITICAL_SECTIONS_ENTERED, 1);
     this->mu_->Lock();
   }
     

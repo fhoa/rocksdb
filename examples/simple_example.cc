@@ -15,9 +15,10 @@ using namespace ROCKSDB_NAMESPACE;
 std::string kDBPath = "/tmp/fhoa_rocksdb_simple_example";
 
 int main() {
+  std::shared_ptr<Statistics> stats = CreateDBStatistics();
   DB* db;
   Options options;
-  options.statistics = CreateDBStatistics();
+  options.statistics = stats;
   // Optimize RocksDB. This is the easiest way to get RocksDB to perform well
   options.IncreaseParallelism();
   options.OptimizeLevelStyleCompaction();

@@ -254,9 +254,19 @@ std::shared_ptr<Statistics> CreateDBStatistics() {
   return stats_;
 }
 
+std::atomic<int> initLocks(0);
+
 void RecordTicker(uint32_t tickerType){
   if(stats_ != NULL){
-    stats_.get()->recordTick(tickerType, 1);
+    if(initLocks != NULL){
+      stats_.get()->recordTick(tickerType, initLocks.load());
+      initLocks = NULL;
+    }else{
+      stats_.get()->recordTick(tickerType, 1);
+    }
+  }
+  else{
+    initLocks++;
   }
 }
 

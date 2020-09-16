@@ -258,9 +258,9 @@ std::atomic<int> initLocks(0);
 
 void RecordTicker(uint32_t tickerType){
   if(stats_ != NULL){
-    if(initLocks != NULL){
+    if(initLocks.load() != 0){
       stats_.get()->recordTick(tickerType, initLocks.load());
-      initLocks = NULL;
+      initLocks = 0;
     }else{
       stats_.get()->recordTick(tickerType, 1);
     }

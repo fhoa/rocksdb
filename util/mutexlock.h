@@ -33,7 +33,7 @@ namespace ROCKSDB_NAMESPACE {
 class MutexLock {
  public:
   explicit MutexLock(port::Mutex *mu) : mu_(mu) {
-    RecordTicker(CRITICAL_SECTIONS_ENTERED);
+    //RecordTicker(CRITICAL_SECTIONS_ENTERED);
     this->mu_->Lock();
   }
     
@@ -55,6 +55,7 @@ class MutexLock {
 class ReadLock {
  public:
   explicit ReadLock(port::RWMutex *mu) : mu_(mu) {
+    //RecordTicker(CRITICAL_SECTIONS_ENTERED);
     this->mu_->ReadLock();
   }
   // No copying allowed
@@ -91,6 +92,7 @@ class ReadUnlock {
 class WriteLock {
  public:
   explicit WriteLock(port::RWMutex *mu) : mu_(mu) {
+    //RecordTicker(CRITICAL_SECTIONS_ENTERED);
     this->mu_->WriteLock();
   }
   // No copying allowed
@@ -123,6 +125,7 @@ class SpinMutex {
     for (size_t tries = 0;; ++tries) {
       if (try_lock()) {
         // success
+        RecordTicker(CRITICAL_SECTIONS_ENTERED);
         break;
       }
       port::AsmVolatilePause();

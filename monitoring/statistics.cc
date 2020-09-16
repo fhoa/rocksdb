@@ -261,12 +261,11 @@ void RecordTicker(uint32_t tickerType){
     if(initLocks.load() != 0){
       stats_.get()->recordTick(tickerType, initLocks.load());
       initLocks = 0;
-    }else{
-      stats_.get()->recordTick(tickerType, 1);
     }
+    stats_.get()->recordTick(tickerType, 1);
   }
   else{
-    initLocks++;
+    initLocks++; // = initLocks.load() + 1;
   }
 }
 

@@ -578,8 +578,6 @@ class Statistics {
 // Create a concrete DBStatistics object
 std::shared_ptr<Statistics> CreateDBStatistics();
 
-std::shared_ptr<Statistics> GetDBStatistics();
-
-void SetDBStatistics(std::shared_ptr<Statistics> stats);
+void RecordTicker(uint32_t tickerType);
 
 }  // namespace ROCKSDB_NAMESPACE

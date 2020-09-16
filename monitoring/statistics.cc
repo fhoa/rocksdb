@@ -254,12 +254,10 @@ std::shared_ptr<Statistics> CreateDBStatistics() {
   return stats_;
 }
 
-std::shared_ptr<Statistics> GetDBStatistics(){
-  return stats_;
-}
-
-void SetDBStatistics(std::shared_ptr<Statistics> stats){
-  stats_ = stats;
+void RecordTicker(uint32_t tickerType){
+  if(stats_ != NULL){
+    stats_.get()->recordTick(tickerType, 1);
+  }
 }
 
 StatisticsImpl::StatisticsImpl(std::shared_ptr<Statistics> stats)

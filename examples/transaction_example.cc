@@ -16,8 +16,10 @@ using namespace ROCKSDB_NAMESPACE;
 std::string kDBPath = "/tmp/rocksdb_transaction_example";
 
 int main() {
+  std::shared_ptr<Statistics> stats = CreateDBStatistics();
   // open DB
   Options options;
+  options.statistics = stats;
   TransactionDBOptions txn_db_options;
   options.create_if_missing = true;
   TransactionDB* txn_db;

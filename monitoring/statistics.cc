@@ -5,7 +5,6 @@
 //
 #include "monitoring/statistics.h"
 
-#include <iostream>
 #include <algorithm>
 #include <cinttypes>
 #include <cstdio>
@@ -258,12 +257,8 @@ std::shared_ptr<Statistics> CreateDBStatistics() {
 std::atomic<int> initLocks(0);
 
 void RecordTicker(uint32_t tickerType){
-  if(!!stats_ && stats_.get() != nullptr){
-    std::cout << "NOT NULL" << std::endl;
+  if(!!stats_){
     stats_.get()->recordTick(tickerType, 1);
-  }
-  else{
-    std::cout << "NULL" << std::endl;
   }
 }
 

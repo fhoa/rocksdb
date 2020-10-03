@@ -5,6 +5,7 @@
 //
 #include "monitoring/statistics.h"
 
+#include <iostream>
 #include <algorithm>
 #include <cinttypes>
 #include <cstdio>
@@ -258,14 +259,11 @@ std::atomic<int> initLocks(0);
 
 void RecordTicker(uint32_t tickerType){
   if(stats_ != NULL){
-    if(initLocks.load() != 0){
-      stats_.get()->recordTick(tickerType, initLocks.load());
-      initLocks = 0;
-    }
+    std::cout << "NOT NULL" << std::endl;
     stats_.get()->recordTick(tickerType, 1);
   }
   else{
-    initLocks++; // = initLocks.load() + 1;
+    std::cout << "NULL" << std::endl;
   }
 }
 

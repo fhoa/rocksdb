@@ -5,6 +5,7 @@
 
 #include <cstdio>
 #include <string>
+#include <iostream>
 
 #include "rocksdb/db.h"
 #include "rocksdb/slice.h"
@@ -27,7 +28,7 @@ int main() {
 
   // open DB
   Status s = DB::Open(options, kDBPath, &db);
-
+  std::cout << "DB OPEN" << std::endl;
   assert(s.ok());
 
   // Put key-value
@@ -81,6 +82,7 @@ int main() {
   // The Slice pointed by pinnable_val is not valid after this point
 
   delete db;
-
+  std::cout << "DB CLOSE" << std::endl;
+  
   return 0;
 }

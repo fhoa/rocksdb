@@ -13,11 +13,13 @@
 
 using namespace ROCKSDB_NAMESPACE;
 
-std::string kDBPath = "/tmp/rocksdb_transaction_example";
+std::string kDBPath = "/tmp/fhoa_rocksdb_transaction_example";
 
 int main() {
+  std::shared_ptr<Statistics> stats = CreateDBStatistics();
   // open DB
   Options options;
+  options.statistics = stats;
   options.create_if_missing = true;
   DB* db;
   OptimisticTransactionDB* txn_db;

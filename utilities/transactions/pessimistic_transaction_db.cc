@@ -249,6 +249,7 @@ Status TransactionDB::Open(
   s = DBImpl::Open(db_options_2pc, dbname, column_families_copy, handles, &db,
                    use_seq_per_batch, use_batch_per_txn);
   if (s.ok()) {
+    db->StartStatsDumpScheduler();
     ROCKS_LOG_WARN(db->GetDBOptions().info_log,
                    "Transaction write_policy is %" PRId32,
                    static_cast<int>(txn_db_options.write_policy));

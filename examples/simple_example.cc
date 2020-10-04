@@ -83,6 +83,6 @@ int main() {
 
   delete db;
   std::cout << "DB CLOSE" << std::endl;
-  
+  std::cout << stats.get()->ToString() << std::endl;
   return 0;
 }

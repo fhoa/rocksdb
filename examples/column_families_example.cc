@@ -70,6 +70,7 @@ int main() {
     s = db->DestroyColumnFamilyHandle(handle);
     assert(s.ok());
   }
+
   delete db;
 
   return 0;

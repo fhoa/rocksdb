@@ -8,6 +8,7 @@
 
 #include <mutex>
 #include <string>
+#include <iostream>
 #include "rocksdb/db.h"
 #include "rocksdb/env.h"
 #include "rocksdb/options.h"
@@ -168,6 +169,7 @@ int main() {
 
   // close the db.
   delete db;
+  std::cout << stats.get()->ToString() << std::endl;
 
   return 0;
 }

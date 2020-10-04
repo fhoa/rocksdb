@@ -415,7 +415,7 @@ enum Histograms : uint32_t {
   DB_SEEK,
   WRITE_STALL,
   SST_READ_MICROS,
-  // The number of subcompactions actually scheduled during a compaction
+  // The number of subcompactions actually sch'eduled during a compaction
   NUM_SUBCOMPACTIONS_SCHEDULED,
   // Value size distribution in each operation
   BYTES_PER_READ,

@@ -66,6 +66,9 @@ int main() {
     return ret;
   }
   ROCKSDB_NAMESPACE::Options options;
+  std::shared_ptr<ROCKSDB_NAMESPACE::Statistics> stats = ROCKSDB_NAMESPACE::CreateDBStatistics();
+  options.statistics = stats;
+
   options.create_if_missing = true;
   options.merge_operator.reset(new MyMerge);
   options.compaction_filter = &filter;

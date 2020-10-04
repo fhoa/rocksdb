@@ -37,7 +37,10 @@ class DummyCompactionFilter : public CompactionFilter {
 }  // namespace
 
 int main() {
+  
   DBOptions db_opt;
+  std::shared_ptr<Statistics> stats = CreateDBStatistics();
+  db_opt.statistics = stats;
   db_opt.create_if_missing = true;
 
   std::vector<ColumnFamilyDescriptor> cf_descs;

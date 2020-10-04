@@ -12,11 +12,13 @@
 
 using namespace ROCKSDB_NAMESPACE;
 
-std::string kDBPath = "/tmp/rocksdb_column_families_example";
+std::string kDBPath = "/tmp/fhoa_rocksdb_column_families_example";
 
 int main() {
   // open DB
+  std::shared_ptr<Statistics> stats = CreateDBStatistics();
   Options options;
+  options.statistics = stats;
   options.create_if_missing = true;
   DB* db;
   Status s = DB::Open(options, kDBPath, &db);

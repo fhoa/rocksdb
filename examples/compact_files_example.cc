@@ -13,7 +13,7 @@
 #include "rocksdb/options.h"
 
 using namespace ROCKSDB_NAMESPACE;
-std::string kDBPath = "/tmp/rocksdb_compact_files_example";
+std::string kDBPath = "/tmp/fhoa_rocksdb_compact_files_example";
 struct CompactionTask;
 
 // This is an example interface of external-compaction algorithm.
@@ -133,7 +133,9 @@ class FullCompactor : public Compactor {
 };
 
 int main() {
+  std::shared_ptr<Statistics> stats = CreateDBStatistics();
   Options options;
+  options.statistics = stats;
   options.create_if_missing = true;
   // Disable RocksDB background compaction.
   options.compaction_style = kCompactionStyleNone;

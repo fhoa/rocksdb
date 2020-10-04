@@ -5,6 +5,7 @@
 #include <cstdio>
 #include <string>
 #include <vector>
+#include <iostream>
 
 #include "rocksdb/db.h"
 #include "rocksdb/slice.h"
@@ -72,6 +73,6 @@ int main() {
   }
 
   delete db;
-
+  std::cout << stats.get()->ToString() << std::endl;
   return 0;
 }

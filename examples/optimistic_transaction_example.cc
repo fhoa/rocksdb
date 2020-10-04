@@ -5,6 +5,8 @@
 
 #ifndef ROCKSDB_LITE
 
+#include <iostream>
+
 #include "rocksdb/db.h"
 #include "rocksdb/options.h"
 #include "rocksdb/slice.h"
@@ -176,6 +178,7 @@ int main() {
   // Cleanup
   delete txn_db;
   DestroyDB(kDBPath, options);
+  std::cout << stats.get()->ToString() << std::endl;
   return 0;
 }
 

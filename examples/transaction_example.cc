@@ -11,6 +11,8 @@
 #include "rocksdb/utilities/transaction.h"
 #include "rocksdb/utilities/transaction_db.h"
 
+#include <iostream>
+
 using namespace ROCKSDB_NAMESPACE;
 
 std::string kDBPath = "/tmp/fhoa_rocksdb_transaction_example";
@@ -182,6 +184,7 @@ int main() {
   // Cleanup
   delete txn_db;
   DestroyDB(kDBPath, options);
+  std::cout << stats.get()->ToString() << std::endl;
   return 0;
 }
 
